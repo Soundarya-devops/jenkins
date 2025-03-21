@@ -16,7 +16,7 @@ permissions:
 jobs:
   # Single deploy job since we're just deploying
   deploy:
-    runs-on: github_dev
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v4
