@@ -1,28 +1,32 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: install webserver
+name: Install Web Server & Deploy Page
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main"]  # Runs on push to the main branch
+  workflow_dispatch:  # Allows manual execution
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  # Single deploy job since we're just deploying
- 
-  install: 
-    runs-on: install web-server
-    steps:
-      - name: nginx.service 
-        run: sudo apt-get install nginx
+  install-webserver:
+    runs-on: ubuntu-latest  # Use a valid runner
 
-  deploy: 
-    runs-on: index.html 
     steps:
-      - name: index.html
-        run: cp index.html /var/www/html
+      - name: Checkout Repository
+        uses: actions/checkout@v4  # Fetch the repo contents
+
+      - name: Install NGINX
+        run: sudo apt-get update && sudo apt-get install -y nginx
+
+      - name: Copy index.html to NGINX Web Directory
+        run: sudo cp index.html /var/www/html/index.html
+
+      - name: Restart NGINX to Apply Changes
+        run: sudo systemctl restart nginx
+
+      - name: Check if Web Server is Running
+        run: curl -I http://localhost
