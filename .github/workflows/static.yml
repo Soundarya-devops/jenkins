@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  install docker: 
+  install: 
     runs-on: self-hosted
     steps:
       - name: install docker
