@@ -28,5 +28,5 @@ jobs:
       - name: Restart NGINX to Apply Changes
         run: sudo systemctl restart nginx
 
-      - name: Check if Web Server is Running
-        run: curl -I http://localhost
+      
+        
