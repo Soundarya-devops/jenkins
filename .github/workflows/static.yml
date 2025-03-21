@@ -1,18 +1,15 @@
-
-<<<<<<< HEAD
-on:
-  # Runs on pushes targeting the default branch
+ # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
+  permissions:
   contents: read
   pages: write
   id-token: write
 
 
-jobs:
+  jobs:
   # Single deploy job since we're just deploying
   deploy:
     runs-on: self-hosted
@@ -25,7 +22,3 @@ jobs:
 
       - name: copy web contect
         run: sudo cp index.html /var/www/html/
-
-
-=======
->>>>>>> a8fd35a45bb8e3bc9c50477125a271693c1cc17b
