@@ -14,26 +14,15 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
+ 
+  install: 
+    runs-on: install web-server
+    steps:
+      - name: nginx.service 
+        run: sudo apt-get install nginx
 
-  deploy:
-      - name: install-webserver
-        runs-on: ubuntu-latest  # Runs on GitHub-hosted Ubuntu runner
-
-        steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4  # Fetches repository code
-
-      - name: Update Package Lists
-        run: sudo apt-get update
-
-      - name: Install NGINX
-        run: sudo apt-get install -y nginx
-
-      - name: Start NGINX
-        run: sudo systemctl start nginx
-
-      - name: Enable NGINX to Start on Boot
-        run: sudo systemctl enable nginx
-
-      - name: Verify NGINX Installation
-        run: curl -I http://localhost
+  deploy: 
+    runs-on: index.html 
+    steps:
+      - name: index.html
+        run: cp index.html /var/www/html
