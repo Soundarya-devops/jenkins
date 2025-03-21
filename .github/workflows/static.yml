@@ -15,16 +15,20 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
-    runs-on: self-hosted
+   build: 
+    runs-on: github_dev
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: docker image build
+        run: echo "building docker image"
 
-      - name: install webserver
-        run: sudo apt-get install nginx -y
+   artifcat: 
+    runs-on: github_dev
+    steps:
+      - name: Push docker image
+        run: echo "pushing docker image"
 
-      - name: copy web contect
-        run: sudo cp index.html /var/www/html/
-      
-        
+   deploy:
+    runs-on: github_dev
+    steps:
+      - name: Run Docker container
+        run: echo "Dockercontainer running"
