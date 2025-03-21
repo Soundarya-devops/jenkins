@@ -15,19 +15,28 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-   build: 
+  install docker: 
+    runs-on: self-hosted
+    steps:
+      - name: install docker
+        run:  sudo apt update
+              sudo apt install -y docker.io
+              sudo systemctl start docker
+              sudo systemctl enable docker
+
+  build: 
     runs-on: self-hosted
     steps:
       - name: docker image build
         run:  docker build -t my-github
 
-   artifcat: 
+  artifcat: 
     runs-on: self-hosted
     steps:
       - name: Push Docker Image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USERNAME }}/my-github
 
-   deploy:
+  deploy:
     runs-on: self-hosted
     steps:
       - name: Run Docker container
