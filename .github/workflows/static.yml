@@ -15,7 +15,7 @@ permissions:
 jobs:
   # Single deploy job since we're just deploying
 
-    deploy:
+  deploy:
       - name: install-webserver
         runs-on: ubuntu-latest  # Runs on GitHub-hosted Ubuntu runner
 
