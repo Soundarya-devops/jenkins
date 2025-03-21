@@ -1,6 +1,5 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
 
+<<<<<<< HEAD
 on:
   # Runs on pushes targeting the default branch
   push:
@@ -28,3 +27,5 @@ jobs:
         run: sudo cp index.html /var/www/html/
 
 
+=======
+>>>>>>> a8fd35a45bb8e3bc9c50477125a271693c1cc17b
