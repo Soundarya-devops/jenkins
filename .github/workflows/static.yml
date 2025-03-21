@@ -14,21 +14,16 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
-  build: 
-    runs-on: github_dev
+ 
+  install:
+    runs-on: nginx.service
     steps:
-      - name: docker image build
-        run: echo "building docker image"
-
-  artifcat: 
-    runs-on: github_dev
-    steps:
-      - name: Push docker image
-        run: echo "pushing docker image"
+      - name: install webserver
+        run: sudo apt-get install nginx.service
 
   deploy:
-    runs-on: github_dev
+    runs-on: index.html
     steps:
-      - name: Run Docker container
-        run: echo "Dockercontainer running"
+      - name: index.html
+        run: cp index.html /var/www/html
 
