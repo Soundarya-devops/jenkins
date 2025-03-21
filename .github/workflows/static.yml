@@ -35,7 +35,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Push Docker Image to Docker Hub
-        run: sudo docker push my-github
+        run: sudo docker push my-github:latest
 
   deploy:
     runs-on: self-hosted
