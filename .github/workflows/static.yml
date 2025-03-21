@@ -14,8 +14,6 @@ permissions:
 
 jobs:
   # Single deploy job since we're just deploying
- 
-jobs:
 
     deploy:
       - name: install-webserver
