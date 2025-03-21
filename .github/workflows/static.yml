@@ -29,8 +29,7 @@ jobs:
           sudo systemctl start docker
           sudo systemctl enable docker
 
-      - name: Log in to Docker Hub
-        run: echo "soundarya1007" | sudo docker login -u "soundarya1007" --password-stdin
+     
 
       - name: Build Docker Image
         run: sudo docker build -t soundarya1007/my-github .
