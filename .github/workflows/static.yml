@@ -16,7 +16,7 @@ permissions:
 jobs:
   # Single deploy job since we're just deploying
   build: 
-    runs-on: github_dev
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +24,7 @@ jobs:
         run: ls -lha && pwd && sudo docker build -t myimage .
 
   test: 
-    runs-on: github_dev
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v4 
@@ -32,7 +32,7 @@ jobs:
         run: sudo docker image ls 
 
   deploy:
-    runs-on: github_dev
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v4
