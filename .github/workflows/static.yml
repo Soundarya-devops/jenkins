@@ -21,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: docker image build
-        run: ls -lha && pwd && sudo docker build -t myimage .
+        run: ls -lha && pwd && sudo docker build -t githubimage .
 
   test: 
     runs-on: self-hosted
@@ -37,4 +37,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run Docker container
-        run: sudo docker run -d -p 75:80 myimage
+        run: sudo docker run -d -p 75:80 githubimage 
